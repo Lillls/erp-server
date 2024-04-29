@@ -1,0 +1,29 @@
+info:
+  app:
+    name: production-service
+    version: '@project.version@'
+    description: ????
+    base-package: com.xjx.production
+spring:
+  application:
+    name: production-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-test-query: SELECT 1
+    url: jdbc:mysql://123.57.145.249:3306/lxy?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: 19941218Xing!
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+logging:
+  config: classpath:logback-spring.xml
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: false

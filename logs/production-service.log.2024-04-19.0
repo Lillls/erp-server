@@ -1,0 +1,89 @@
+2024-04-19 13:08:56.568 [main] INFO  c.x.p.ProductionServiceApplication - Starting ProductionServiceApplication using Java 1.8.0_301 on xuejiaxingdeMacBook-Pro.local with PID 77909 (/Users/xuejiaxing/开发环境/ideaProject/production-service/target/classes started by xuejiaxing in /Users/xuejiaxing/开发环境/ideaProject/production-service)
+2024-04-19 13:08:56.571 [main] INFO  c.x.p.ProductionServiceApplication - No active profile set, falling back to default profiles: default
+2024-04-19 13:08:58.059 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2024-04-19 13:08:58.064 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-19 13:08:58.065 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-04-19 13:08:58.133 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-19 13:08:58.133 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1505 ms
+2024-04-19 13:08:59.420 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2024-04-19 13:08:59.897 [main] INFO  c.x.p.ProductionServiceApplication - Started ProductionServiceApplication in 3.751 seconds (JVM running for 4.423)
+2024-04-19 13:46:58.986 [main] INFO  c.x.p.ProductionServiceApplication - Starting ProductionServiceApplication using Java 1.8.0_301 on xuejiaxingdeMacBook-Pro.local with PID 91925 (/Users/xuejiaxing/开发环境/ideaProject/production-service/target/classes started by xuejiaxing in /Users/xuejiaxing/开发环境/ideaProject/production-service)
+2024-04-19 13:46:58.989 [main] INFO  c.x.p.ProductionServiceApplication - No active profile set, falling back to default profiles: default
+2024-04-19 13:47:00.393 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2024-04-19 13:47:00.398 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-19 13:47:00.398 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-04-19 13:47:00.467 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-19 13:47:00.467 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1406 ms
+2024-04-19 13:47:01.819 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2024-04-19 13:47:02.319 [main] INFO  c.x.p.ProductionServiceApplication - Started ProductionServiceApplication in 3.769 seconds (JVM running for 4.449)
+2024-04-19 13:47:44.408 [main] INFO  c.x.p.ProductionServiceApplication - Starting ProductionServiceApplication using Java 1.8.0_301 on xuejiaxingdeMacBook-Pro.local with PID 92212 (/Users/xuejiaxing/开发环境/ideaProject/production-service/target/classes started by xuejiaxing in /Users/xuejiaxing/开发环境/ideaProject/production-service)
+2024-04-19 13:47:44.411 [main] INFO  c.x.p.ProductionServiceApplication - No active profile set, falling back to default profiles: default
+2024-04-19 13:47:45.946 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2024-04-19 13:47:45.952 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-19 13:47:45.952 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-04-19 13:47:46.029 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-19 13:47:46.029 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1533 ms
+2024-04-19 13:47:47.410 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2024-04-19 13:47:47.934 [main] INFO  c.x.p.ProductionServiceApplication - Started ProductionServiceApplication in 3.982 seconds (JVM running for 4.915)
+2024-04-19 13:48:08.436 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-19 13:48:08.437 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-04-19 13:48:08.440 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2024-04-19 13:50:28.678 [main] INFO  c.x.p.ProductionServiceApplication - Starting ProductionServiceApplication using Java 1.8.0_301 on xuejiaxingdeMacBook-Pro.local with PID 93222 (/Users/xuejiaxing/开发环境/ideaProject/production-service/target/classes started by xuejiaxing in /Users/xuejiaxing/开发环境/ideaProject/production-service)
+2024-04-19 13:50:28.681 [main] INFO  c.x.p.ProductionServiceApplication - No active profile set, falling back to default profiles: default
+2024-04-19 13:50:29.309 [main] INFO  c.x.p.ProductionServiceApplication - Starting ProductionServiceApplication using Java 1.8.0_301 on xuejiaxingdeMacBook-Pro.local with PID 93239 (/Users/xuejiaxing/开发环境/ideaProject/production-service/target/classes started by xuejiaxing in /Users/xuejiaxing/开发环境/ideaProject/production-service)
+2024-04-19 13:50:29.310 [main] INFO  c.x.p.ProductionServiceApplication - No active profile set, falling back to default profiles: default
+2024-04-19 13:50:30.327 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2024-04-19 13:50:30.333 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-19 13:50:30.334 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-04-19 13:50:30.412 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-19 13:50:30.412 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1603 ms
+2024-04-19 13:50:30.909 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2024-04-19 13:50:30.915 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-19 13:50:30.915 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-04-19 13:50:30.985 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-19 13:50:30.986 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1594 ms
+2024-04-19 13:50:31.846 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2024-04-19 13:50:32.389 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8081 is already in use
+2024-04-19 13:50:32.391 [main] INFO  c.x.p.ProductionServiceApplication - Started ProductionServiceApplication in 4.362 seconds (JVM running for 4.961)
+2024-04-19 13:50:32.395 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2024-04-19 13:50:32.407 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-04-19 13:50:32.419 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2024-04-19 13:50:41.650 [main] INFO  c.x.p.ProductionServiceApplication - Starting ProductionServiceApplication using Java 1.8.0_301 on xuejiaxingdeMacBook-Pro.local with PID 93303 (/Users/xuejiaxing/开发环境/ideaProject/production-service/target/classes started by xuejiaxing in /Users/xuejiaxing/开发环境/ideaProject/production-service)
+2024-04-19 13:50:41.653 [main] INFO  c.x.p.ProductionServiceApplication - No active profile set, falling back to default profiles: default
+2024-04-19 13:50:43.102 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2024-04-19 13:50:43.108 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-19 13:50:43.109 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-04-19 13:50:43.182 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-19 13:50:43.182 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1447 ms
+2024-04-19 13:50:44.563 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2024-04-19 13:50:45.104 [main] INFO  c.x.p.ProductionServiceApplication - Started ProductionServiceApplication in 3.925 seconds (JVM running for 4.599)
+2024-04-19 13:50:49.877 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-19 13:50:49.878 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-04-19 13:50:49.881 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-04-19 13:55:32.305 [main] INFO  c.x.p.ProductionServiceApplication - Starting ProductionServiceApplication using Java 1.8.0_301 on xuejiaxingdeMacBook-Pro.local with PID 95126 (/Users/xuejiaxing/开发环境/ideaProject/production-service/target/classes started by xuejiaxing in /Users/xuejiaxing/开发环境/ideaProject/production-service)
+2024-04-19 13:55:32.307 [main] INFO  c.x.p.ProductionServiceApplication - No active profile set, falling back to default profiles: default
+2024-04-19 13:55:33.730 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2024-04-19 13:55:33.735 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-19 13:55:33.735 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-04-19 13:55:33.806 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-19 13:55:33.806 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1443 ms
+2024-04-19 13:55:35.077 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2024-04-19 13:55:35.530 [main] INFO  c.x.p.ProductionServiceApplication - Started ProductionServiceApplication in 3.64 seconds (JVM running for 4.201)
+2024-04-19 13:55:42.759 [http-nio-8081-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-19 13:55:42.760 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-04-19 13:55:42.764 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms

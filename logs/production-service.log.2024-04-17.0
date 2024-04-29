@@ -1,0 +1,76 @@
+2024-04-17 20:11:14.192 [%PARSER_ERROR[ip]] [main] ERROR o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@17f62e33 - There is no conversion class registered for conversion word [ip]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@17f62e33 - [ip] is not a valid conversion word
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:328)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:282)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:240)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:216)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:338)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:296)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.xjx.production.ProductionServiceApplication.main(ProductionServiceApplication.java:16)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@17f62e33 - There is no conversion class registered for conversion word [ip]
+ERROR in ch.qos.logback.core.pattern.parser.Compiler@17f62e33 - [ip] is not a valid conversion word
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:179)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithSpecificConfig(AbstractLoggingSystem.java:66)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:57)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:316)
+	... 18 common frames omitted
+2024-04-17 20:11:35.050 [main] INFO  c.x.p.ProductionServiceApplication - Starting ProductionServiceApplication using Java 1.8.0_301 on xuejiaxingdeMacBook-Pro.local with PID 15817 (/Users/xuejiaxing/开发环境/ideaProject/production-service/target/classes started by xuejiaxing in /Users/xuejiaxing/开发环境/ideaProject/production-service)
+2024-04-17 20:11:35.056 [main] INFO  c.x.p.ProductionServiceApplication - No active profile set, falling back to default profiles: default
+2024-04-17 20:11:35.643 [main] INFO  c.x.p.ProductionServiceApplication - Starting ProductionServiceApplication using Java 1.8.0_301 on xuejiaxingdeMacBook-Pro.local with PID 15820 (/Users/xuejiaxing/开发环境/ideaProject/production-service/target/classes started by xuejiaxing in /Users/xuejiaxing/开发环境/ideaProject/production-service)
+2024-04-17 20:11:35.645 [main] INFO  c.x.p.ProductionServiceApplication - No active profile set, falling back to default profiles: default
+2024-04-17 20:11:36.653 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2024-04-17 20:11:36.658 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-17 20:11:36.659 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-04-17 20:11:36.733 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-17 20:11:36.734 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1605 ms
+2024-04-17 20:11:37.195 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2024-04-17 20:11:37.201 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-17 20:11:37.202 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-04-17 20:11:37.274 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-17 20:11:37.274 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1575 ms
+2024-04-17 20:11:38.213 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2024-04-17 20:11:38.731 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8081 is already in use
+2024-04-17 20:11:38.739 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2024-04-17 20:11:38.742 [main] INFO  c.x.p.ProductionServiceApplication - Started ProductionServiceApplication in 4.376 seconds (JVM running for 5.0)
+2024-04-17 20:11:38.752 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-04-17 20:11:38.762 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2024-04-17 20:11:48.521 [main] INFO  c.x.p.ProductionServiceApplication - Starting ProductionServiceApplication using Java 1.8.0_301 on xuejiaxingdeMacBook-Pro.local with PID 15899 (/Users/xuejiaxing/开发环境/ideaProject/production-service/target/classes started by xuejiaxing in /Users/xuejiaxing/开发环境/ideaProject/production-service)
+2024-04-17 20:11:48.525 [main] INFO  c.x.p.ProductionServiceApplication - No active profile set, falling back to default profiles: default
+2024-04-17 20:11:50.020 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2024-04-17 20:11:50.026 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-17 20:11:50.026 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-04-17 20:11:50.095 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-17 20:11:50.095 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1474 ms
+2024-04-17 20:11:51.439 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2024-04-17 20:11:51.977 [main] INFO  c.x.p.ProductionServiceApplication - Started ProductionServiceApplication in 3.917 seconds (JVM running for 4.589)
