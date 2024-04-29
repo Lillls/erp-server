@@ -1,6 +1,7 @@
 package com.xjx.production.service.product;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.xjx.production.dto.ProductPageResult;
 import com.xjx.production.entity.product.Product;
 import com.xjx.production.repository.product.ProductMapper;
 import com.xjx.production.repository.product.ProductRepository;
@@ -100,11 +101,14 @@ public class ProductService {
     return productRepository.removeById(id);
   }
 
-  public IPage<Product> selectProductWithSize(Product product) {
-    IPage<Product> productIPage = new Page<>();
-    product.setCurrent(product.getCurrent());
-    product.setSize(product.getSize());
-    return productMapper.selectProductWithSize(productIPage, product);
+  /**
+   * 商品分页查询
+   * @param product
+   * @return
+   */
+  public IPage<ProductPageResult> selectProductWithSize(Product product) {
+    IPage<ProductPageResult> page = new Page<>(product.getCurrent(), product.getSize());
+    return productMapper.selectProductWithSize(page, product);
   }
 
 }

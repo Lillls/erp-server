@@ -3,6 +3,7 @@ package com.xjx.production.repository.product;
 import java.util.List;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.xjx.production.dto.ProductPageResult;
 import com.xjx.production.entity.product.Product;
 import com.xjx.production.plugin.MyBaseMapper;
 import org.springframework.stereotype.Component;
@@ -17,5 +18,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface ProductMapper extends MyBaseMapper<Product> {
-  public IPage<Product> selectProductWithSize(IPage<Product> page,Product product);
+
+  /**
+   * 商品分页查询
+   * @param page
+   * @param product
+   * @return
+   */
+  IPage<ProductPageResult> selectProductWithSize(IPage<ProductPageResult> page, Product product);
+
 }

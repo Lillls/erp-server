@@ -41,6 +41,7 @@ public class Product extends AbstractBaseEntity {
 
   @TableField("price")
   private BigDecimal price;
+
   @TableField(value = "description_pictures", typeHandler = JacksonTypeHandler.class)
   private String[] descriptionPictures;
 
@@ -78,7 +79,7 @@ public class Product extends AbstractBaseEntity {
   @TableField("main_element")
   private String mainElement;
 
-//  @TableField("package_weight")
+/*//  @TableField("package_weight")
 //  private Double packageWeight;
 
   @TableField("size_url")
@@ -94,5 +95,5 @@ public class Product extends AbstractBaseEntity {
   private BigDecimal height;
 
   @TableField("unit")
-  private String unit;
+  private String unit;*/
 }

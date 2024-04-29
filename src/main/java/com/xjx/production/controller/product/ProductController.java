@@ -3,6 +3,7 @@ package com.xjx.production.controller.product;
 
 import java.util.List;
 
+import com.xjx.production.dto.ProductPageResult;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -75,11 +76,10 @@ public class ProductController {
     return R.ok(productService.getProductById(id));
   }
 
-  @ApiOperation(value = "根据对象返回带分页的Product")
-  @ApiImplicitParam(name = "productList", value = "待查询的Product", required = true,
-      dataTypeClass = Product.class, paramType = "body")
-  @PostMapping("/productList")
-  public R<IPage<Product>> page(@RequestBody Product product) {
+  @ApiOperation(value = "商品分页查询")
+  @ApiImplicitParam(name = "product", value = "product", required = true, dataTypeClass = Product.class, paramType = "body")
+  @PostMapping("/pageByParam")
+  public R<IPage<ProductPageResult>> pageByParam(@RequestBody Product product) {
     return R.ok(productService.selectProductWithSize(product));
   }
 
