@@ -20,10 +20,10 @@ public class StsService {
         // STS服务接入点，例如sts.cn-hangzhou.aliyuncs.com。您可以通过公网或者VPC接入STS服务。
         String endpoint = "sts.cn-hangzhou.aliyuncs.com";
         // 从环境变量中获取步骤1生成的RAM用户的访问密钥（AccessKey ID和AccessKey Secret）。
-        String accessKeyId = "LTAI4G8M5JNg3UHsvNGL7gFi";
-        String accessKeySecret = "pCbBo37UkFK7gxZPT4D4XjOg3vGPM2";
+        String accessKeyId = "*";
+        String accessKeySecret = "*";
         // 从环境变量中获取步骤3生成的RAM角色的RamRoleArn。
-        String roleArn = "acs:ram::1431491464853492:role/ramosstest";
+        String roleArn = "*";
         // 自定义角色会话名称，用来区分不同的令牌，例如可填写为SessionTest。
         String roleSessionName = "RamOssTest";
         // 以下Policy用于限制仅允许使用临时访问凭证向目标存储空间examplebucket下的src目录上传文件。
