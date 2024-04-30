@@ -1,7 +1,7 @@
 package com.xjx.production.service.product;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xjx.production.dto.ProductPageResult;
+import com.xjx.production.dto.product.ProductPageResult;
 import com.xjx.production.entity.product.Product;
 import com.xjx.production.repository.product.ProductMapper;
 import com.xjx.production.repository.product.ProductRepository;

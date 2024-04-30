@@ -1,5 +1,7 @@
 package com.xjx.production.service.category;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.xjx.production.dto.category.CategoryPageResult;
 import com.xjx.production.entity.category.Category;
 import com.xjx.production.repository.category.CategoryMapper;
 import com.xjx.production.repository.category.CategoryRepository;
@@ -69,8 +71,10 @@ public class CategoryService {
      * @param category 实体参宿对象
      * @return IPage<Category> 分页对象
      */
-    public IPage<Category> pageByCategory(Category category) {
-        return categoryRepository.pageByCategory(category);
+    public IPage<CategoryPageResult> pageByCategory(Category category) {
+        Page<CategoryPageResult> page = new Page<>(category.getCurrent(), category.getSize());
+        page.setOptimizeCountSql(false);
+        return categoryMapper.pageByParam(page, category);
     }
 
     /**

@@ -1,9 +1,7 @@
 package com.xjx.production.repository.product;
 
-import java.util.List;
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.xjx.production.dto.ProductPageResult;
+import com.xjx.production.dto.product.ProductPageResult;
 import com.xjx.production.entity.product.Product;
 import com.xjx.production.plugin.MyBaseMapper;
 import org.springframework.stereotype.Component;

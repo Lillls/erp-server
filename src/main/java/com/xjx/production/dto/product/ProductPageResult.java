@@ -1,7 +1,8 @@
-package com.xjx.production.dto;
+package com.xjx.production.dto.product;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.xjx.production.dto.category.BasicSizeInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -87,25 +88,5 @@ public class ProductPageResult {
     private Long updator;
 
     @ApiModelProperty("尺寸信息")
-    private BaseSizeInfo sizeInfo;
-
-    @Data
-    @ApiModel(value = "BaseSizeInfo", description = "尺寸基本信息")
-    static class BaseSizeInfo{
-
-        @ApiModelProperty("宽")
-        private BigDecimal width;
-
-        @ApiModelProperty("高")
-        private BigDecimal height;
-
-        @ApiModelProperty("单位")
-        private String unit;
-
-        @ApiModelProperty("")
-        private BigDecimal packageWeight;
-
-        @ApiModelProperty("特征")
-        private String symbol;
-    }
+    private BasicSizeInfo sizeInfo;
 }

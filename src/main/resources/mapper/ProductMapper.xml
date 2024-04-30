@@ -30,8 +30,9 @@
         <result column="main_element" property="mainElement"/>
     </resultMap>
     
-    <resultMap id="pageMap" type="com.xjx.production.dto.ProductPageResult" extends="BaseResultMap">
-        <association property="sizeInfo" javaType="com.xjx.production.dto.ProductPageResult$BaseSizeInfo">
+    <resultMap id="pageMap" type="com.xjx.production.dto.product.ProductPageResult" extends="BaseResultMap">
+        <association property="sizeInfo" javaType="com.xjx.production.dto.category.BasicSizeInfo">
+            <result column="sid" property="id"/>
             <result column="width" property="width"/>
             <result column="height" property="height"/>
             <result column="unit" property="unit"/>
@@ -58,6 +59,7 @@
     <select id="selectProductWithSize" resultMap="pageMap">
         SELECT
             p.*,
+            s.id as sid,
             s.width,
             s.height,
             s.unit,

@@ -25,6 +25,19 @@
         <result column="is_delete" property="isDelete"/>
     </resultMap>
 
+    <resultMap id="pageMap" type="com.xjx.production.dto.category.CategoryPageResult" extends="BaseResultMap">
+        <collection property="sizeInfos" ofType="com.xjx.production.dto.category.BasicSizeInfo" >
+            <result column="sid" property="id"/>
+            <result column="width" property="width"/>
+            <result column="height" property="height"/>
+            <result column="unit" property="unit"/>
+            <result column="package_weight" property="packageWeight"/>
+            <result column="symbol" property="symbol"/>
+        </collection>
+    </resultMap>
+
+
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id
@@ -37,5 +50,23 @@
         updator_name,
         category_name, key_feature1, key_feature2, key_feature3, key_feature4, key_feature5, is_delete
     </sql>
+
+    <select id="pageByParam" resultMap="pageMap" parameterType="com.xjx.production.entity.category.Category">
+        SELECT
+            c.*,
+            s.id as sid,
+            s.width,
+            s.height,
+            s.unit,
+            s.package_weight,
+            s.symbol
+        from
+            lxy_category c
+                left join lxy_size s on
+                c.id = s.category_id
+        <where>
+            c.is_delete = 0 and s.is_delete = 0
+        </where>
+    </select>
 
 </mapper>

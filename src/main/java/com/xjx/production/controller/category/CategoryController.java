@@ -2,6 +2,7 @@ package com.xjx.production.controller.category;
 
 
 import com.xjx.production.base.R;
+import com.xjx.production.dto.category.CategoryPageResult;
 import com.xjx.production.entity.category.SizeInfo;
 import com.xjx.production.entity.product.Product;
 
@@ -71,20 +72,16 @@ public class CategoryController {
     return R.ok(categoryService.getCategoryById(id));
   }
 
+  /**
+   * 品类分页查询
+   * @param category
+   * @return
+   */
   @ApiOperation(value = "根据对象返回带分页的Category")
-  @ApiImplicitParam(name = "categoryList", value = "待查询的Category", required = true,
-      dataTypeClass = Category.class, paramType = "body")
-  @PostMapping("/categoryList")
-  public R<IPage<Category>> page(@RequestBody Category category) {
-    IPage<Category> categoryIPage = categoryService.pageByCategory(category);
-    for (Category record : categoryIPage.getRecords()) {
-      SizeInfo sizeInfo = new SizeInfo();
-      sizeInfo.setCategoryId(record.getId());
-      sizeInfo.setSize(-1);
-      IPage<SizeInfo> sizeInfoIPage = mSizeInfoService.pageByCategorySize(sizeInfo);
-      record.setSizes(sizeInfoIPage.getRecords());
-    }
-    return R.ok(categoryIPage);
+  @ApiImplicitParam(name = "category", value = "待查询的Category", required = true, dataTypeClass = Category.class, paramType = "body")
+  @PostMapping("/pageByParam")
+  public R<IPage<CategoryPageResult>> pageByParam(@RequestBody Category category) {
+    return R.ok(categoryService.pageByCategory(category));
   }
 
   @ApiOperation(value = "删除Category", notes = "根据主键id删除Category ")
@@ -94,5 +91,6 @@ public class CategoryController {
   public R<Boolean> delete(@PathVariable(name = "id") Long id) {
     return R.ok(categoryService.deleteCategoryById(id));
   }
+
 
 }

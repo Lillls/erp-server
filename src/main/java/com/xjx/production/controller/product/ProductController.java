@@ -3,7 +3,7 @@ package com.xjx.production.controller.product;
 
 import java.util.List;
 
-import com.xjx.production.dto.ProductPageResult;
+import com.xjx.production.dto.product.ProductPageResult;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
