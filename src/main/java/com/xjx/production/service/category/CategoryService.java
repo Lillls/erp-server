@@ -73,7 +73,6 @@ public class CategoryService {
      */
     public IPage<CategoryPageResult> pageByCategory(Category category) {
         Page<CategoryPageResult> page = new Page<>(category.getCurrent(), category.getSize());
-        page.setOptimizeCountSql(false);
         return categoryMapper.pageByParam(page, category);
     }
 

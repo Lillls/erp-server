@@ -12,22 +12,21 @@
         <result column="updator" property="updator"/>
         <result column="updator_name" property="updatorName"/>
         <result column="category_name" property="categoryName"/>
-        <result column="key_feature1" property="keyFeature1"
-                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
-        <result column="key_feature2" property="keyFeature2"
-                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
-        <result column="key_feature3" property="keyFeature3"
-                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
-        <result column="key_feature4" property="keyFeature4"
-                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
-        <result column="key_feature5" property="keyFeature5"
-                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
-        <result column="is_delete" property="isDelete"/>
+<!--        <result column="key_feature1" property="keyFeature1"-->
+<!--                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>-->
+<!--        <result column="key_feature2" property="keyFeature2"-->
+<!--                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>-->
+<!--        <result column="key_feature3" property="keyFeature3"-->
+<!--                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>-->
+<!--        <result column="key_feature4" property="keyFeature4"-->
+<!--                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>-->
+<!--        <result column="key_feature5" property="keyFeature5"-->
+<!--                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>-->
+<!--        <result column="is_delete" property="isDelete"/>-->
     </resultMap>
 
     <resultMap id="pageMap" type="com.xjx.production.dto.category.CategoryPageResult" extends="BaseResultMap">
         <collection property="sizeInfos" ofType="com.xjx.production.dto.category.BasicSizeInfo" >
-            <result column="sid" property="id"/>
             <result column="width" property="width"/>
             <result column="height" property="height"/>
             <result column="unit" property="unit"/>
@@ -53,8 +52,7 @@
 
     <select id="pageByParam" resultMap="pageMap" parameterType="com.xjx.production.entity.category.Category">
         SELECT
-            c.*,
-            s.id as sid,
+            c.id,
             s.width,
             s.height,
             s.unit,
@@ -62,10 +60,11 @@
             s.symbol
         from
             lxy_category c
-                left join lxy_size s on
-                c.id = s.category_id
+        left join lxy_size s on
+            c.id = s.category_id
         <where>
-            c.is_delete = 0 and s.is_delete = 0
+            1=1
+            and c.is_delete = 0
         </where>
     </select>
 
