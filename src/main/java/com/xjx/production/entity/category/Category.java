@@ -28,6 +28,10 @@ import lombok.EqualsAndHashCode;
 public class Category extends AbstractBaseEntity {
   @TableField("category_name")
   private String categoryName;
+  @TableField("category_alias1")
+  private String categoryAlias1;
+  @TableField("category_alias2")
+  private String categoryAlias2;
   @TableField(value = "key_feature1", typeHandler = JacksonTypeHandler.class)
   private String[] keyFeature1;
   @TableField(value = "key_feature2", typeHandler = JacksonTypeHandler.class)

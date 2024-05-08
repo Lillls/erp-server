@@ -29,9 +29,14 @@ public class CategoryPageResult {
 
   @ApiModelProperty("主键")
   private Long id;
-
   @ApiModelProperty("品类名称")
   private String categoryName;
+
+  @ApiModelProperty("品类别名")
+  private String categoryAlias1;
+
+  @ApiModelProperty("品类别名")
+  private String categoryAlias2;
 
   @ApiModelProperty(value = "拓展字段1")
   private String[] keyFeature1;

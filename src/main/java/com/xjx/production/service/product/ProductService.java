@@ -72,6 +72,14 @@ public class ProductService {
     return productRepository.getById(id);
   }
 
+  public List<Product> listByIds(List<Long> ids) {
+    return productRepository.listByIds(ids);
+  }
+
+  public boolean updateBatch(List<Product> productList) {
+    return productRepository.saveOrUpdateBatch(productList);
+  }
+
   /**
    * 根据条件查询分页集合
    *

@@ -12,6 +12,9 @@
         <result column="updator" property="updator"/>
         <result column="updator_name" property="updatorName"/>
         <result column="category_name" property="categoryName"/>
+        <result column="category_type" property="categoryType"/>
+        <result column="category_alias1" property="categoryAlias1"/>
+        <result column="category_alias2" property="categoryAlias2"/>
         <result column="key_feature1" property="keyFeature1"
                 typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
         <result column="key_feature2" property="keyFeature2"
@@ -27,9 +30,12 @@
 
     <resultMap id="pageMap" type="com.xjx.production.dto.category.CategoryPageResult" extends="BaseResultMap">
         <collection property="sizeInfos" ofType="com.xjx.production.dto.category.BasicSizeInfo" >
-            <result column="width" property="width"/>
+          <result column="sid" property="id"/>
+          <result column="width" property="width"/>
             <result column="height" property="height"/>
             <result column="unit" property="unit"/>
+            <result column="size_url" property="sizeUrl"/>
+            <result column="category_id" property="categoryId"/>
             <result column="package_weight" property="packageWeight"/>
             <result column="symbol" property="symbol"/>
         </collection>
@@ -47,6 +53,8 @@
         lc.updator,
         lc.updator_name,
         lc.category_name,
+        lc.category_alias1,
+        lc.category_alias2,
         lc.key_feature1,
         lc.key_feature2,
         lc.key_feature3,
@@ -58,11 +66,14 @@
     <select id="pageByParam" resultMap="pageMap" parameterType="com.xjx.production.entity.category.Category">
         SELECT
             <include refid="Base_Column_List"></include>,
+            s.id as sid,
             s.width,
             s.height,
             s.unit,
+            s.category_id,
             s.package_weight,
-            s.symbol
+            s.symbol,
+            s.size_url
         from
             lxy_category lc
         left join lxy_size s on
@@ -70,6 +81,7 @@
         <where>
             1=1
             and lc.is_delete = 0
+            and s.is_delete = 0
         </where>
     </select>
 

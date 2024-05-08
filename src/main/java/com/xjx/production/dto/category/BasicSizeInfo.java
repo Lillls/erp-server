@@ -12,6 +12,8 @@ public class BasicSizeInfo {
 
     @ApiModelProperty("主键")
     private Long id;
+    @ApiModelProperty("对应品类主键")
+    private Long categoryId;
 
     @ApiModelProperty("宽")
     private BigDecimal width;
@@ -27,5 +29,8 @@ public class BasicSizeInfo {
 
     @ApiModelProperty("特征")
     private String symbol;
+
+    @ApiModelProperty("尺寸对应图片url")
+    private String sizeUrl;
 
 }
