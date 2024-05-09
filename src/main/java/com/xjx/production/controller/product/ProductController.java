@@ -130,7 +130,7 @@ public class ProductController {
   @ApiOperation(value = "商品分页查询")
   @ApiImplicitParam(name = "product", value = "product", required = true,
       dataTypeClass = Product.class, paramType = "body")
-  @PostMapping("/pageByParam")
+  @PostMapping("/listByPage")
   public R<IPage<ProductPageResult>> pageByParam(@RequestBody Product product) {
     return R.ok(productService.selectProductWithSize(product));
   }

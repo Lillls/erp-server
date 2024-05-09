@@ -7,13 +7,13 @@
         <result column="id" property="id" />
         <result column="create_time" property="createTime" />
         <result column="creator_name" property="creatorName" />
+        <result column="creator" property="creator" />
         <result column="updator" property="updator" />
         <result column="updator_name" property="updatorName" />
         <result column="update_time" property="updateTime" />
         <result column="name" property="name" />
         <result column="count_limit_daily" property="countLimitDaily" />
         <result column="count_limit_total" property="countLimitTotal" />
-        <result column="column_name" property="columnName" />
         <result column="is_delete" property="isDelete" />
     </resultMap>
 
@@ -21,11 +21,12 @@
     <sql id="Base_Column_List">
         id,
         create_time,
+        creator,
         creator_name,
         updator,
         updator_name,
         update_time,
-        name, count_limit_daily, count_limit_total, column_name, is_delete
+        name, count_limit_daily, count_limit_total, is_delete
     </sql>
 
 </mapper>

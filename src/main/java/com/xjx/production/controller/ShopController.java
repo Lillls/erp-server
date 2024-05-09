@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2024-05-08
  */
 @RestController
-@RequestMapping("/lxyShop")
+@RequestMapping("/shop")
 public class ShopController {
     /**
      * lxyShop业务处理类
@@ -52,7 +52,7 @@ public class ShopController {
 
     @ApiOperation(value = "根据对象返回带分页的LxyShop")
     @ApiImplicitParam(name = "lxyShop", value = "待查询的LxyShop", required = true, dataTypeClass = Shop.class, paramType = "body")
-    @PostMapping()
+    @PostMapping("/listByPage")
     public R<IPage<Shop>> page(@RequestBody Shop shop) {
         return R.ok(shopService.pageByShop(shop));
     }

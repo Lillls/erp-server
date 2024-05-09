@@ -79,7 +79,7 @@ public class CategoryController {
    */
   @ApiOperation(value = "根据对象返回带分页的Category")
   @ApiImplicitParam(name = "category", value = "待查询的Category", required = true, dataTypeClass = Category.class, paramType = "body")
-  @PostMapping("/pageByParam")
+  @PostMapping("/listByPage")
   public R<IPage<CategoryPageResult>> pageByParam(@RequestBody Category category) {
     return R.ok(categoryService.pageByCategory(category));
   }

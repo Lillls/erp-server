@@ -23,7 +23,7 @@ import lombok.EqualsAndHashCode;
 public class Shop extends AbstractBaseEntity {
 
     @TableField("name")
-    private Integer name;
+    private String name;
 
     @ApiModelProperty(value = "每天可以上传的最大数量")
     @TableField("count_limit_daily")
@@ -32,9 +32,6 @@ public class Shop extends AbstractBaseEntity {
     @ApiModelProperty(value = "可以上传的总量")
     @TableField("count_limit_total")
     private Integer countLimitTotal;
-
-    @TableField("column_name")
-    private String columnName;
 
     @TableField("is_delete")
     private Integer isDelete;
