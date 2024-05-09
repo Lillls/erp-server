@@ -33,4 +33,7 @@ public class BasicSizeInfo {
     @ApiModelProperty("尺寸对应图片url")
     private String sizeUrl;
 
+  @ApiModelProperty("商品价格")
+  private BigDecimal price;
+
 }

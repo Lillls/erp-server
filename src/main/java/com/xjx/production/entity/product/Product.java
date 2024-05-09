@@ -22,7 +22,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "lxy_product", autoResultMap = true)
+@TableName(value = "product", autoResultMap = true)
 @ApiModel(value = "Product", description = "")
 public class Product extends AbstractBaseEntity {
   @TableField("category")

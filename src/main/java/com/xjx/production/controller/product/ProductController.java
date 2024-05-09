@@ -81,8 +81,7 @@ public class ProductController {
       }
       ids.add(product.getId());
     }
-    List<Product> products = productService.listByIds(ids);
-    Product childProduct = products.get(0);
+    Product childProduct = productList.get(0);
     String parentSku = childProduct.getDesignNumber() + "'s Parent SKU";
     Product parentProduct = new Product();
     parentProduct.setParentage("Parent");
@@ -90,12 +89,7 @@ public class ProductController {
     parentProduct.setCategory(childProduct.getCategory());
     parentProduct.setCategoryId(childProduct.getCategoryId());
     Long parentId = productService.saveProduct(parentProduct);
-    for (Product product : products) {
-      product.setParentage("Child");
-      product.setParentSku(parentSku);
-      product.setParentId(parentId);
-    }
-    productService.updateBatch(products);
+    productService.mergeProduct(ids, parentSku, parentId);
     return R.ok();
   }
 

@@ -38,6 +38,7 @@
             <result column="category_id" property="categoryId"/>
             <result column="package_weight" property="packageWeight"/>
             <result column="symbol" property="symbol"/>
+            <result column="price" property="price"/>
         </collection>
     </resultMap>
 
@@ -73,10 +74,11 @@
             s.category_id,
             s.package_weight,
             s.symbol,
-            s.size_url
+            s.size_url,
+            s.price
         from
-            lxy_category lc
-        left join lxy_size s on
+            category lc
+        left join size_price s on
             lc.id = s.category_id
         <where>
             1=1

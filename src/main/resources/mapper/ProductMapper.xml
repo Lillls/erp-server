@@ -2,39 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xjx.production.repository.product.ProductMapper">
 
-    <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.xjx.production.entity.product.Product">
-        <result column="id" property="id"/>
-        <result column="create_time" property="createTime"/>
-        <result column="creator" property="creator"/>
-        <result column="creator_name" property="creatorName"/>
-        <result column="update_time" property="updateTime"/>
-        <result column="updator" property="updator"/>
-        <result column="updator_name" property="updatorName"/>
-        <result column="category" property="category"/>
-        <result column="parent_id" property="parentId"/>
-        <result column="sku" property="sku"/>
-        <result column="parentage" property="parentage"/>
-        <result column="parent_sku" property="parentSku"/>
-        <result column="description" property="description"/>
-        <result column="main_image_url" property="mainImageUrl"/>
-        <result column="design_number" property="designNumber"/>
-        <result column="description_pictures" property="descriptionPictures" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
-        <result column="price" property="price"/>
-        <result column="key_feature1" property="keyFeature1"/>
-        <result column="key_feature2" property="keyFeature2"/>
-        <result column="key_feature3" property="keyFeature3"/>
-        <result column="key_feature4" property="keyFeature4"/>
-        <result column="key_feature5" property="keyFeature5"/>
-        <result column="generic_keywords" property="genericKeywords"/>
-        <result column="caption" property="caption"/>
-        <result column="category_id" property="categoryId"/>
-        <result column="export_count" property="exportCount"/>
-        <result column="extra_info" property="extraInfo"/>
-        <result column="is_delete" property="isDelete"/>
-        <result column="main_element" property="mainElement"/>
-        <result column="size_id" property="sizeId"/>
-    </resultMap>
+  <!-- 通用查询映射结果 -->
+  <resultMap id="BaseResultMap" type="com.xjx.production.entity.product.Product">
+    <result column="id" property="id"/>
+    <result column="create_time" property="createTime"/>
+    <result column="creator" property="creator"/>
+    <result column="creator_name" property="creatorName"/>
+    <result column="update_time" property="updateTime"/>
+    <result column="updator" property="updator"/>
+    <result column="updator_name" property="updatorName"/>
+    <result column="category" property="category"/>
+    <result column="parent_id" property="parentId"/>
+    <result column="sku" property="sku"/>
+    <result column="parentage" property="parentage"/>
+    <result column="parent_sku" property="parentSku"/>
+    <result column="description" property="description"/>
+    <result column="main_image_url" property="mainImageUrl"/>
+    <result column="design_number" property="designNumber"/>
+    <result column="description_pictures" property="descriptionPictures"
+            typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+    <result column="price" property="price"/>
+    <result column="key_feature1" property="keyFeature1"/>
+    <result column="key_feature2" property="keyFeature2"/>
+    <result column="key_feature3" property="keyFeature3"/>
+    <result column="key_feature4" property="keyFeature4"/>
+    <result column="key_feature5" property="keyFeature5"/>
+    <result column="generic_keywords" property="genericKeywords"/>
+    <result column="caption" property="caption"/>
+    <result column="category_id" property="categoryId"/>
+    <result column="export_count" property="exportCount"/>
+    <result column="extra_info" property="extraInfo"/>
+    <result column="is_delete" property="isDelete"/>
+    <result column="main_element" property="mainElement"/>
+    <result column="size_id" property="sizeId"/>
+  </resultMap>
 
   <resultMap id="pageMap" type="com.xjx.production.dto.product.ProductPageResult" extends="BaseResultMap">
     <association property="sizeInfo" javaType="com.xjx.production.dto.category.BasicSizeInfo">
@@ -46,6 +47,7 @@
       <result column="package_weight" property="packageWeight"/>
       <result column="symbol" property="symbol"/>
       <result column="size_url" property="sizeUrl"/>
+      <result column="price" property="price"/>
     </association>
     <association property="categoryInfo" javaType="com.xjx.production.dto.category.BasicCategoryInfo">
       <result column="category_id" property="categoryId"/>
@@ -54,11 +56,12 @@
       <result column="category_name" property="categoryName"/>
     </association>
   </resultMap>
-    
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-        id,
+
+  <!-- 通用查询结果列 -->
+  <sql id="Base_Column_List">
+    id
+    ,
         create_time,
         creator,
         size_info,
@@ -74,31 +77,32 @@
         size_id,
         parent_id,
         category, sku, parent_sku, description, price, description_pictures, key_feature1, key_feature2, key_feature3, key_feature4, key_feature5, generic_keywords, category_id, export_count, extra_info, is_delete
-    </sql>
+  </sql>
 
-    <select id="selectProductWithSize" resultMap="pageMap">
-        SELECT
-            p.*,
-            s.id as sid,
-            s.width,
-            s.height,
-            s.unit,
-            s.package_weight,
-            s.symbol,
-            s.size_url,
-            lc.category_alias1,
-            lc.id as category_id,
-            lc.category_alias2,
-            lc.category_name
-        from
-            lxy_product p
-                left join lxy_size s on
-                    p.size_id = s.id
-                left join lxy_category lc on
-                    p.category_id = lc.id
-        <where>
-            p.is_delete = 0 and
-            p.parentage='Child'
-        </where>
-    </select>
+  <select id="selectProductWithSize" resultMap="pageMap">
+    SELECT
+    p.*,
+    s.id as sid,
+    s.width,
+    s.height,
+    s.unit,
+    s.package_weight,
+    s.symbol,
+    s.size_url,
+    s.price,
+    lc.category_alias1,
+    lc.id as category_id,
+    lc.category_alias2,
+    lc.category_name
+    from
+    product p
+    left join size_price s on
+    p.size_id = s.id
+    left join category lc on
+    p.category_id = lc.id
+    <where>
+      p.is_delete = 0 and
+      p.parentage='Child'
+    </where>
+  </select>
 </mapper>

@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("lxy_size")
+@TableName("size_price")
 @ApiModel(value = "SizeInfo", description = "")
 public class SizeInfo extends AbstractBaseEntity {
 

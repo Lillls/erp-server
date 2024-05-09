@@ -6,6 +6,7 @@ import com.xjx.production.entity.product.Product;
 import com.xjx.production.repository.product.ProductMapper;
 import com.xjx.production.repository.product.ProductRepository;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -111,6 +112,7 @@ public class ProductService {
 
   /**
    * 商品分页查询
+   *
    * @param product
    * @return
    */
@@ -119,4 +121,7 @@ public class ProductService {
     return productMapper.selectProductWithSize(page, product);
   }
 
+  public void mergeProduct(List<Long> ids, String parentSku, Long parentId) {
+    productMapper.mergeProduct(StringUtils.join(ids,","), parentSku,parentId);
+  }
 }

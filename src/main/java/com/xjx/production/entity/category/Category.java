@@ -23,7 +23,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "lxy_category", autoResultMap = true)
+@TableName(value = "category", autoResultMap = true)
 @ApiModel(value = "Category", description = "")
 public class Category extends AbstractBaseEntity {
   @TableField("category_name")
