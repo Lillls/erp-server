@@ -2,7 +2,6 @@ package com.xjx.production.entity.product;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.xjx.production.plugin.AbstractBaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -19,9 +18,9 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("lxy_shop")
-@ApiModel(value="LxyShop", description="")
-public class LxyShop extends AbstractBaseEntity {
+@TableName("shop")
+@ApiModel(value="Shop", description="")
+public class Shop extends AbstractBaseEntity {
 
     @TableField("name")
     private Integer name;

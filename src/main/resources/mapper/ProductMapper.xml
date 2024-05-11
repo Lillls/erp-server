@@ -12,9 +12,13 @@
         <result column="updator" property="updator"/>
         <result column="updator_name" property="updatorName"/>
         <result column="category" property="category"/>
+        <result column="parent_id" property="parentId"/>
         <result column="sku" property="sku"/>
+        <result column="parentage" property="parentage"/>
         <result column="parent_sku" property="parentSku"/>
         <result column="description" property="description"/>
+        <result column="main_image_url" property="mainImageUrl"/>
+        <result column="design_number" property="designNumber"/>
         <result column="description_pictures" property="descriptionPictures" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
         <result column="price" property="price"/>
         <result column="key_feature1" property="keyFeature1"/>
@@ -23,23 +27,33 @@
         <result column="key_feature4" property="keyFeature4"/>
         <result column="key_feature5" property="keyFeature5"/>
         <result column="generic_keywords" property="genericKeywords"/>
+        <result column="caption" property="caption"/>
         <result column="category_id" property="categoryId"/>
         <result column="export_count" property="exportCount"/>
         <result column="extra_info" property="extraInfo"/>
         <result column="is_delete" property="isDelete"/>
         <result column="main_element" property="mainElement"/>
+        <result column="size_id" property="sizeId"/>
     </resultMap>
-    
-    <resultMap id="pageMap" type="com.xjx.production.dto.product.ProductPageResult" extends="BaseResultMap">
-        <association property="sizeInfo" javaType="com.xjx.production.dto.category.BasicSizeInfo">
-            <result column="sid" property="id"/>
-            <result column="width" property="width"/>
-            <result column="height" property="height"/>
-            <result column="unit" property="unit"/>
-            <result column="package_weight" property="packageWeight"/>
-            <result column="symbol" property="symbol"/>
-        </association>
-    </resultMap>
+
+  <resultMap id="pageMap" type="com.xjx.production.dto.product.ProductPageResult" extends="BaseResultMap">
+    <association property="sizeInfo" javaType="com.xjx.production.dto.category.BasicSizeInfo">
+      <result column="sid" property="id"/>
+      <result column="width" property="width"/>
+      <result column="height" property="height"/>
+      <result column="unit" property="unit"/>
+      <result column="category_id" property="categoryId"/>
+      <result column="package_weight" property="packageWeight"/>
+      <result column="symbol" property="symbol"/>
+      <result column="size_url" property="sizeUrl"/>
+    </association>
+    <association property="categoryInfo" javaType="com.xjx.production.dto.category.BasicCategoryInfo">
+      <result column="category_id" property="categoryId"/>
+      <result column="category_alias1" property="categoryAlias1"/>
+      <result column="category_alias2" property="categoryAlias2"/>
+      <result column="category_name" property="categoryName"/>
+    </association>
+  </resultMap>
     
 
     <!-- 通用查询结果列 -->
@@ -50,9 +64,15 @@
         size_info,
         creator_name,
         update_time,
+        parentage,
+        design_number,
+        main_image_url,
+        caption,
         updator,
         updator_name,
         main_element,
+        size_id,
+        parent_id,
         category, sku, parent_sku, description, price, description_pictures, key_feature1, key_feature2, key_feature3, key_feature4, key_feature5, generic_keywords, category_id, export_count, extra_info, is_delete
     </sql>
 
@@ -64,13 +84,21 @@
             s.height,
             s.unit,
             s.package_weight,
-            s.symbol
+            s.symbol,
+            s.size_url,
+            lc.category_alias1,
+            lc.id as category_id,
+            lc.category_alias2,
+            lc.category_name
         from
             lxy_product p
                 left join lxy_size s on
-                p.size_id = s.id
+                    p.size_id = s.id
+                left join lxy_category lc on
+                    p.category_id = lc.id
         <where>
-            p.is_delete = 0
+            p.is_delete = 0 and
+            p.parentage='Child'
         </where>
     </select>
 </mapper>

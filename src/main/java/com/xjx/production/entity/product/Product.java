@@ -6,8 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.xjx.production.entity.category.SizeInfo;
 import com.xjx.production.plugin.AbstractBaseEntity;
 
 import io.swagger.annotations.ApiModel;
@@ -39,6 +37,18 @@ public class Product extends AbstractBaseEntity {
   @TableField("description")
   private String description;
 
+  @TableField("caption")
+  private String caption;
+
+  @TableField("design_number")
+  private String designNumber;
+
+  @TableField("main_image_url")
+  private String mainImageUrl;
+
+  @TableField("parentage")
+  private String parentage;
+
   @TableField("price")
   private BigDecimal price;
 
@@ -65,6 +75,12 @@ public class Product extends AbstractBaseEntity {
 
   @TableField("category_id")
   private Long categoryId;
+
+  @TableField("parent_id")
+  private Long parentId;
+
+  @TableField("size_id")
+  private Long sizeId;
 
   @TableField("export_count")
   private Integer exportCount;
