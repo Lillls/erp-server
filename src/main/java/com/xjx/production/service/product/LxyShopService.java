@@ -13,7 +13,7 @@ import java.util.List;
  *  LxyShop业务服务类
  * </p>
  *
- * @author jzbian
+ * @author xjx
  * @since 2024-05-08
  */
 @Service

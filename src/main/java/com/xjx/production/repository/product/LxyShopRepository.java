@@ -11,7 +11,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
  *  LxyShop数据库操作类
  * </p>
  *
- * @author jzbian
+ * @author xjx
  * @since 2024-05-08
  */
 @Service

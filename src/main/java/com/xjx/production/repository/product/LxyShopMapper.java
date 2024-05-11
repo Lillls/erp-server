@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  *  Mapper 接口
  * </p>
  *
- * @author jzbian
+ * @author xjx
  * @since 2024-05-08
  */
 @Component

@@ -34,3 +34,4 @@ build/
 /*.log
 
 /logs/production-service.log
+/logs/
