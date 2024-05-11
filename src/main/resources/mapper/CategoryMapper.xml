@@ -15,6 +15,7 @@
         <result column="category_type" property="categoryType"/>
         <result column="category_alias1" property="categoryAlias1"/>
         <result column="category_alias2" property="categoryAlias2"/>
+        <result column="attribute" property="attribute"/>
         <result column="key_feature1" property="keyFeature1"
                 typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
         <result column="key_feature2" property="keyFeature2"
@@ -56,6 +57,7 @@
         lc.category_name,
         lc.category_alias1,
         lc.category_alias2,
+        lc.attribute,
         lc.key_feature1,
         lc.key_feature2,
         lc.key_feature3,

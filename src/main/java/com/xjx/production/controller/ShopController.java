@@ -31,11 +31,13 @@ public class ShopController {
     @Autowired
     ShopService shopService;
 
-    @ApiOperation(value = "新增/更新LxyShop", notes = "id为空是新建，非空是更新;更新全部字段")
-    @ApiImplicitParam(name = "lxyShop", value = "待保存的LxyShop", required = true, dataTypeClass = Shop.class, paramType = "body")
-    @PutMapping
-    public R<Long> save(@RequestBody Shop shop) {
-        return R.ok(shopService.saveShop(shop));
+    @ApiOperation(value = "新增/更新Shop", notes = "id为空是新建，非空是更新;更新全部字段")
+    @ApiImplicitParam(name = "/addShop", value = "待保存的Shop", required = true, dataTypeClass = Shop.class, paramType = "body")
+    @PutMapping("/addShop")
+    public R<Shop> save(@RequestBody Shop shop) {
+      Long id = shopService.saveShop(shop);
+      shop.setId(id);
+      return R.ok(shop);
     }
 
     @ApiOperation(value = "新增/更新非空字段LxyShop", notes = "id为空是新建，非空是更新;只更新非空字段")
@@ -51,7 +53,7 @@ public class ShopController {
     public R<Shop> get(@PathVariable(name = "id") Long id) { return R.ok(shopService.getShopById(id));}
 
     @ApiOperation(value = "根据对象返回带分页的LxyShop")
-    @ApiImplicitParam(name = "lxyShop", value = "待查询的LxyShop", required = true, dataTypeClass = Shop.class, paramType = "body")
+    @ApiImplicitParam(name = "shop", value = "待查询的LxyShop", required = true, dataTypeClass = Shop.class, paramType = "body")
     @PostMapping("/listByPage")
     public R<IPage<Shop>> page(@RequestBody Shop shop) {
         return R.ok(shopService.pageByShop(shop));
