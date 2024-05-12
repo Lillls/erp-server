@@ -13,20 +13,20 @@ import java.util.List;
  *  Shop业务服务类
  * </p>
  *
- * @author jzbian
+ * @author xjx
  * @since 2024-05-08
  */
 @Service
 public class ShopService {
 
     /**
-     * lxyShopMapper
+     * ShopMapper
      */
     @Autowired
     ShopMapper mShopMapper;
 
     /**
-     * lxyShopRepository
+     * ShopRepository
      */
     @Autowired
     ShopRepository mShopRepository;
@@ -54,7 +54,7 @@ public class ShopService {
     /**
      * 根据主键查询对象
      * @param id 主键
-     * @return LxyShop 对象实体
+     * @return Shop 对象实体
      */
     public Shop getShopById(Long id) {
         return mShopRepository.getById(id);
@@ -63,7 +63,7 @@ public class ShopService {
     /**
      * 根据条件查询分页集合
      * @param shop 实体参宿对象
-     * @return IPage<LxyShop> 分页对象
+     * @return IPage<Shop> 分页对象
      */
     public IPage<Shop> pageByShop(Shop shop) {
         return mShopRepository.pageByShop(shop);
@@ -71,7 +71,7 @@ public class ShopService {
 
     /**
      * 查询所有数据
-     * @return List<LxyShop> 数据结果集合
+     * @return List<Shop> 数据结果集合
      */
     public List<Shop> queryShop() {
         return mShopRepository.list(null);

@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/shop")
 public class ShopController {
     /**
-     * lxyShop业务处理类
+     * Shop业务处理类
      */
     @Autowired
     ShopService shopService;
@@ -40,27 +40,27 @@ public class ShopController {
       return R.ok(shop);
     }
 
-    @ApiOperation(value = "新增/更新非空字段LxyShop", notes = "id为空是新建，非空是更新;只更新非空字段")
-    @ApiImplicitParam(name = "lxyShop", value = "待保存的LxyShop", required = true, dataTypeClass = Shop.class, paramType = "body")
+    @ApiOperation(value = "新增/更新非空字段Shop", notes = "id为空是新建，非空是更新;只更新非空字段")
+    @ApiImplicitParam(name = "Shop", value = "待保存的Shop", required = true, dataTypeClass = Shop.class, paramType = "body")
     @PatchMapping
     public R<Long> savePatch(@RequestBody Shop shop) {
         return R.ok(shopService.saveShopNotNull(shop));
     }
 
-    @ApiOperation(value = "根据id返回LxyShop")
-    @ApiImplicitParam(name = "id", value = "LxyShop的主键", required = true, dataTypeClass = Long.class, paramType = "path")
+    @ApiOperation(value = "根据id返回Shop")
+    @ApiImplicitParam(name = "id", value = "Shop的主键", required = true, dataTypeClass = Long.class, paramType = "path")
     @GetMapping("/{id}")
     public R<Shop> get(@PathVariable(name = "id") Long id) { return R.ok(shopService.getShopById(id));}
 
-    @ApiOperation(value = "根据对象返回带分页的LxyShop")
-    @ApiImplicitParam(name = "shop", value = "待查询的LxyShop", required = true, dataTypeClass = Shop.class, paramType = "body")
+    @ApiOperation(value = "根据对象返回带分页的Shop")
+    @ApiImplicitParam(name = "shop", value = "待查询的Shop", required = true, dataTypeClass = Shop.class, paramType = "body")
     @PostMapping("/listByPage")
     public R<IPage<Shop>> page(@RequestBody Shop shop) {
         return R.ok(shopService.pageByShop(shop));
     }
 
-    @ApiOperation(value = "删除LxyShop", notes = "根据主键id删除LxyShop ")
-    @ApiImplicitParam(name = "id", value = "LxyShop的主键", required = true, dataTypeClass = Long.class, paramType = "path")
+    @ApiOperation(value = "删除Shop", notes = "根据主键id删除Shop ")
+    @ApiImplicitParam(name = "id", value = "Shop的主键", required = true, dataTypeClass = Long.class, paramType = "path")
     @DeleteMapping("/{id}")
     public R<Boolean> delete(@PathVariable(name = "id") Long id) {
         return R.ok(shopService.deleteShopById(id));

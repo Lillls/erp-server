@@ -20,7 +20,7 @@ public class ShopRepository extends BaseRepository<ShopMapper, Shop> {
     /**
      * 查询分页对象
      * @param shop 条件查询对象
-     * @return IPage<LxyShop>
+     * @return IPage<Shop>
      */
     public IPage<Shop> pageByShop(Shop shop) {
         QueryWrapper<Shop> queryWrapper = new QueryWrapper<>();
