@@ -10,7 +10,6 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.log.LogMessage;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -46,6 +45,8 @@ public class JwtBasicAuthenticationFilter extends GenericFilterBean {
 
     private final RequestMatcher requiresAuthenticationRequestMatcher;
 
+    private static final String FILTER_APPLIED = "__spring_security_jwtBasicAuthenticationFilter_filterApplied";
+
     public JwtBasicAuthenticationFilter(){
         this.requiresAuthenticationRequestMatcher = new AntPathRequestMatcher("/login", "POST");;
     }
@@ -57,13 +58,15 @@ public class JwtBasicAuthenticationFilter extends GenericFilterBean {
     }
 
     public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println("调用JwtFilter");
         /**
-         * 如果是登录接口放行，否则认证token，没有token的一律401
+         * 该过滤器会执行两次，一次是spring secuirty执行，
+         * 另一次是springmvc执行，因为通过Bean注入的，所以自动放在了mvc过滤器链
+         * 所以mvc这次是否执行 需要先校验是否请求过
          */
-        if(requiresAuthentication(request, response)){
+        if(isApplied(request, response)){
             chain.doFilter(request, response);
         }else {
+            request.setAttribute(FILTER_APPLIED, Boolean.TRUE);
             String authorization_header = request.getHeader("Authorization");
             if(!StringUtils.hasLength(authorization_header)){
                 writeUnAuthentication(response, "未获取到Authorization信息!");
@@ -99,16 +102,8 @@ public class JwtBasicAuthenticationFilter extends GenericFilterBean {
 
     }
 
-    protected boolean requiresAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        if (this.requiresAuthenticationRequestMatcher.matches(request)) {
-            return true;
-        } else {
-            if (this.logger.isTraceEnabled()) {
-                this.logger.trace(LogMessage.format("Did not match request to %s", this.requiresAuthenticationRequestMatcher));
-            }
-
-            return false;
-        }
+    protected boolean isApplied(HttpServletRequest request, HttpServletResponse response) {
+        return request != null && request.getAttribute(FILTER_APPLIED) != null;
     }
 
 

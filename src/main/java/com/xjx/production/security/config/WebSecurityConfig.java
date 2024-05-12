@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().permitAll()
                 .and().csrf().disable()
                 .addFilterBefore(loginUsernamePasswordJsonFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(jwtBasicAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterAfter(jwtBasicAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
                 //.exceptionHandling().authenticationEntryPoint(unAuthenticationEntryPoint);
     }
 }
