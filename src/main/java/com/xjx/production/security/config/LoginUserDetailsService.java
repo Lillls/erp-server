@@ -33,6 +33,7 @@ public class LoginUserDetailsService implements UserDetailsService {
 
         if(null == umsMember) {
             log.warn("根据用户名没有查询到对应的用户信息:{}",username);
+            throw new UsernameNotFoundException("没获取到用户");
         }
 
         log.info("根据用户名:{}获取用户登陆信息:{}",username, new ObjectMapper().writeValueAsString(umsMember));

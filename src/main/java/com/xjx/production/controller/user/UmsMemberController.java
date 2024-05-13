@@ -2,6 +2,9 @@ package com.xjx.production.controller.user;
 
 
 import com.xjx.production.base.R;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -63,6 +66,12 @@ public class UmsMemberController {
     @DeleteMapping("/{id}")
     public R<Boolean> delete(@PathVariable(name = "id") Long id) {
         return R.ok(umsMemberService.deleteUmsMemberById(id));
+    }
+
+    @ApiOperation(value = "获取当前登录用户", notes = "获取当前登录用户")
+    @GetMapping("/getCurrentUser")
+    public R<UmsMember> getCurrentUser() {
+        return R.ok(umsMemberService.getCurrentUser());
     }
 
 }

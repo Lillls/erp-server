@@ -2,6 +2,7 @@ package com.xjx.production.entity.user;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xjx.production.plugin.AbstractBaseEntity;
 import io.swagger.annotations.ApiModel;
@@ -25,6 +26,7 @@ public class UmsMember extends AbstractBaseEntity {
 
     @ApiModelProperty(value = "用户名")
     @TableField("user_name")
+    @JsonAlias("name")
     private String userName;
 
     @ApiModelProperty(value = "密码")

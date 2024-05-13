@@ -12,6 +12,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Collections;
 
 @Configuration
 @Slf4j
@@ -52,8 +57,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and().logout().permitAll()
                 .and().csrf().disable()
+                .cors().configurationSource(corsConfigurationSource())
+                .and()
                 .addFilterBefore(loginUsernamePasswordJsonFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterAfter(jwtBasicAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
                 //.exceptionHandling().authenticationEntryPoint(unAuthenticationEntryPoint);
+    }
+
+    /**
+     * 跨域
+     * @return
+     */
+    public CorsConfigurationSource corsConfigurationSource(){
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
+        corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
+        corsConfiguration.setAllowedOrigins(Collections.singletonList("*"));
+        corsConfiguration.setMaxAge(3600L);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfiguration);
+        return source;
     }
 }

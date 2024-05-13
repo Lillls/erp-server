@@ -3,6 +3,8 @@ package com.xjx.production.service.user;
 import com.xjx.production.entity.user.UmsMember;
 import com.xjx.production.repository.user.UmsMemberMapper;
 import com.xjx.production.repository.user.UmsMemberRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +86,11 @@ public class UmsMemberService {
      */
     public Boolean deleteUmsMemberById(Long id) {
         return umsMemberRepository.removeById(id);
+    }
+
+    public UmsMember getCurrentUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return umsMemberRepository.queryMemberByUserName(authentication.getName());
     }
 
 
