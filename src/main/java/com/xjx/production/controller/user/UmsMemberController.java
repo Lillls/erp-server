@@ -70,8 +70,8 @@ public class UmsMemberController {
 
     @ApiOperation(value = "获取当前登录用户", notes = "获取当前登录用户")
     @GetMapping("/getCurrentUser")
-    public R<UmsMember> getCurrentUser() {
-        return R.ok(umsMemberService.getCurrentUser());
+    public R<Authentication> getCurrentUser() {
+        return R.ok(SecurityContextHolder.getContext().getAuthentication());
     }
 
 }

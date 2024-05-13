@@ -88,7 +88,9 @@ public class JwtBasicAuthenticationFilter extends GenericFilterBean {
                     return;
                 }
 
-                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(usernameFromToken,null,null);
+                umsMember.setPassword(null);
+                umsMember.setToken(null);
+                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(umsMember,null,null);
                 SecurityContextHolder.getContext().setAuthentication(token);
                 chain.doFilter(request,response);
 
