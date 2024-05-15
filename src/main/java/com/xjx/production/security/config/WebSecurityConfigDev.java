@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -20,21 +19,12 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Collections;
 
 @Configuration
-@Profile("pro")
+@Profile("dev")
 @Slf4j
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfigDev extends WebSecurityConfigurerAdapter {
 
     @Autowired
     LoginUserDetailsService loginUserDetailsService;
-
-    @Autowired
-    LoginUsernamePasswordJsonFilter loginUsernamePasswordJsonFilter;
-
-    @Autowired
-    UnAuthenticationEntryPoint unAuthenticationEntryPoint;
-
-    @Autowired
-    JwtBasicAuthenticationFilter jwtBasicAuthenticationFilter;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -54,16 +44,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().permitAll()
                 .and().authorizeRequests()
-                .antMatchers("/oauth/**","/test/**","/login").permitAll()
                 .anyRequest()
-                .authenticated()
+                .permitAll()
                 .and().logout().permitAll()
                 .and().csrf().disable()
-                .cors().configurationSource(corsConfigurationSource())
-                .and()
-                .addFilterBefore(loginUsernamePasswordJsonFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterAfter(jwtBasicAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-                //.exceptionHandling().authenticationEntryPoint(unAuthenticationEntryPoint);
+                .cors().configurationSource(corsConfigurationSource());
     }
 
     /**
