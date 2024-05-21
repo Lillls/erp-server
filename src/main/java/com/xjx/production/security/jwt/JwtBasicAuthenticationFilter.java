@@ -9,6 +9,9 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
+import lombok.AllArgsConstructor;
+import org.codehaus.jettison.json.JSONArray;
+import org.omg.SendingContext.RunTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
@@ -34,23 +37,21 @@ import java.util.Objects;
  * 登录之后获取jwt
  * 所有请求的请求头必须带有Authentication:Bearer
  */
-
-@Component
-@Profile("pro")
 public class JwtBasicAuthenticationFilter extends GenericFilterBean {
 
-    @Autowired
     UmsMemberRepository memberRepository;
 
-    @Autowired
     JwtTokenUtil jwtTokenUtil;
 
-    private final RequestMatcher requiresAuthenticationRequestMatcher;
+    private final RequestMatcher knife4jAuthenticationRequestMatcher;
 
     private static final String FILTER_APPLIED = "__spring_security_jwtBasicAuthenticationFilter_filterApplied";
 
-    public JwtBasicAuthenticationFilter(){
-        this.requiresAuthenticationRequestMatcher = new AntPathRequestMatcher("/login", "POST");;
+    public JwtBasicAuthenticationFilter(UmsMemberRepository umsMemberRepository, JwtTokenUtil jwtTokenUtil, RequestMatcher requestMatcher){
+        this.memberRepository = umsMemberRepository;
+        this.jwtTokenUtil = jwtTokenUtil;
+        //this.knife4jAuthenticationRequestMatcher = new AntPathRequestMatcher("/login", "POST");
+        this.knife4jAuthenticationRequestMatcher = requestMatcher;
     }
 
 
@@ -65,7 +66,7 @@ public class JwtBasicAuthenticationFilter extends GenericFilterBean {
          * 另一次是springmvc执行，因为通过Bean注入的，所以自动放在了mvc过滤器链
          * 所以mvc这次是否执行 需要先校验是否请求过
          */
-        if(isApplied(request, response)){
+        if(isApplied(request, response) || this.knife4jAuthenticationRequestMatcher.matches(request)){
             chain.doFilter(request, response);
         }else {
             request.setAttribute(FILTER_APPLIED, Boolean.TRUE);

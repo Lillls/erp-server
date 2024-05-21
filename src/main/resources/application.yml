@@ -6,7 +6,7 @@ info:
     base-package: com.xjx.production
 spring:
   profiles:
-    active: dev
+    active: pro
   application:
     name: production-service
   datasource:
