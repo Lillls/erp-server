@@ -2,6 +2,8 @@ package com.xjx.production.entity.category;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.math.BigDecimal;
+import java.util.BitSet;
+
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xjx.production.plugin.AbstractBaseEntity;
@@ -43,6 +45,9 @@ public class SizeInfo extends AbstractBaseEntity {
 
   @TableField("symbol")
   private String symbol;
+
+  @TableField("price")
+  private BigDecimal price;
 
   @JsonIgnore
   @TableField("is_delete")

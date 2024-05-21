@@ -88,4 +88,8 @@ public class UmsMemberService {
         return umsMemberRepository.removeById(id);
     }
 
+    public UmsMember getCurrentUser() {
+        return (UmsMember) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.xjx.production.controller.category;
+package com.xjx.production.controller;
 
 
 import com.xjx.production.base.R;

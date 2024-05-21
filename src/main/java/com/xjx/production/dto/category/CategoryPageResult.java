@@ -38,6 +38,12 @@ public class CategoryPageResult {
   @ApiModelProperty("品类别名")
   private String categoryAlias2;
 
+  private String attribute;
+
+  private String fixedData;
+
+  private String templateHeader;
+
   @ApiModelProperty(value = "拓展字段1")
   private String[] keyFeature1;
 

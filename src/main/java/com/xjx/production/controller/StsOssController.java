@@ -1,4 +1,4 @@
-package com.xjx.production.controller.sts;
+package com.xjx.production.controller;
 
 import com.aliyuncs.auth.sts.AssumeRoleResponse;
 import com.xjx.production.base.R;

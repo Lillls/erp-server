@@ -13,6 +13,7 @@
         <result column="updator_name" property="updatorName" />
         <result column="width" property="width" />
         <result column="height" property="height" />
+        <result column="price" property="price" />
         <result column="unit" property="unit" />
         <result column="is_delete" property="isDelete" />
     </resultMap>

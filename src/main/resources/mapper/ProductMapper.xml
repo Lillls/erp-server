@@ -54,6 +54,7 @@
       <result column="category_alias1" property="categoryAlias1"/>
       <result column="category_alias2" property="categoryAlias2"/>
       <result column="category_name" property="categoryName"/>
+      <result column="fixed_data" property="fixedData"/>
     </association>
   </resultMap>
 
@@ -93,7 +94,8 @@
     lc.category_alias1,
     lc.id as category_id,
     lc.category_alias2,
-    lc.category_name
+    lc.category_name,
+    lc.fixed_data
     from
     product p
     left join size_price s on
@@ -102,7 +104,7 @@
     p.category_id = lc.id
     <where>
       p.is_delete = 0 and
-      p.parentage='Child'
+      p.creator = #{userId}
     </where>
   </select>
 </mapper>

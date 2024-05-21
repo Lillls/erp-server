@@ -13,6 +13,7 @@ public class BasicCategoryInfo {
   private String categoryAlias2;
   @ApiModelProperty("特征")
   private String categoryName;
+  private String fixedData;
   @ApiModelProperty("特征")
   private Long categoryId;
 

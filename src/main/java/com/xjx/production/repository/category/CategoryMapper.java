@@ -8,12 +8,13 @@ import com.xjx.production.dto.category.CategoryPageResult;
 import com.xjx.production.entity.category.Category;
 import com.xjx.production.entity.product.Product;
 import com.xjx.production.plugin.MyBaseMapper;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author xjx
@@ -22,5 +23,7 @@ import org.springframework.stereotype.Component;
 @Component
 public interface CategoryMapper extends MyBaseMapper<Category> {
 
-    IPage<CategoryPageResult> pageByParam(Page<CategoryPageResult> page, @Param("param")Category category);
+  IPage<CategoryPageResult> pageByParam(Page<CategoryPageResult> page);
+
+  CategoryPageResult categoryById(@Param("categoryId") Long categoryId);
 }

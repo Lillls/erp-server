@@ -71,10 +71,14 @@ public class CategoryService {
      * @param category 实体参宿对象
      * @return IPage<Category> 分页对象
      */
-    public IPage<CategoryPageResult> pageByCategory(Category category) {
-        Page<CategoryPageResult> page = new Page<>(category.getCurrent(), category.getSize());
-        return categoryMapper.pageByParam(page, category);
+    public IPage<CategoryPageResult> pageByCategory(int current, int size) {
+        Page<CategoryPageResult> page = new Page<>(current, size);
+        return categoryMapper.pageByParam(page);
     }
+
+  public CategoryPageResult categoryById(Long id) {
+    return categoryMapper.categoryById(id);
+  }
 
     /**
      * 查询所有数据

@@ -42,8 +42,14 @@ public class Category extends AbstractBaseEntity {
   private String[] keyFeature4;
   @TableField(value = "key_feature5", typeHandler = JacksonTypeHandler.class)
   private String[] keyFeature5;
+  @TableField(value = "fixed_data")
+  private String fixedData;
+  @TableField(value = "attribute")
+  private String attribute;
+  @TableField(value = "template_header")
+  private String templateHeader;
   @TableField(exist = false)
-  private List<SizeInfo> sizes;
+  private List<SizeInfo> sizeInfos;
   @JsonIgnore
   @TableField(value = "is_delete")
   private Integer isDelete;

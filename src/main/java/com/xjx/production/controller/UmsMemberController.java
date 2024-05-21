@@ -1,4 +1,4 @@
-package com.xjx.production.controller.user;
+package com.xjx.production.controller;
 
 
 import com.xjx.production.base.R;

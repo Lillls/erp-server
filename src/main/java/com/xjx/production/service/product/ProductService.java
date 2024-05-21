@@ -51,6 +51,10 @@ public class ProductService {
     return product.getId();
   }
 
+  public boolean saveProductList(List<Product> product) {
+    return productRepository.saveBatch(product);
+  }
+
   /**
    * 保存/更新对象中的非空值
    *
@@ -113,15 +117,14 @@ public class ProductService {
   /**
    * 商品分页查询
    *
-   * @param product
    * @return
    */
-  public IPage<ProductPageResult> selectProductWithSize(Product product) {
-    IPage<ProductPageResult> page = new Page<>(product.getCurrent(), product.getSize());
-    return productMapper.selectProductWithSize(page, product);
+  public IPage<ProductPageResult> selectProductWithSize(Long userId, int current, int size) {
+    IPage<ProductPageResult> page = new Page<>(current, size);
+    return productMapper.selectProductWithSize(userId, page);
   }
 
   public void mergeProduct(List<Long> ids, String parentSku, Long parentId) {
-    productMapper.mergeProduct(StringUtils.join(ids,","), parentSku,parentId);
+    productMapper.mergeProduct(StringUtils.join(ids, ","), parentSku, parentId);
   }
 }

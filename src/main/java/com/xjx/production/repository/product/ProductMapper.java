@@ -22,12 +22,12 @@ public interface ProductMapper extends MyBaseMapper<Product> {
 
   /**
    * 商品分页查询
-   *
+   * @param userId 用户id
    * @param page
-   * @param product
    * @return
    */
-  IPage<ProductPageResult> selectProductWithSize(IPage<ProductPageResult> page, Product product);
+  IPage<ProductPageResult> selectProductWithSize(@Param("userId") Long userId,
+      IPage<ProductPageResult> page);
 
   @Update(
       "update product set parent_sku = #{parentSku},parent_id = #{parentId} where id in (${ids})")
