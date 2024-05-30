@@ -2,6 +2,8 @@ package com.xjx.production.utils;
 
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xjx.production.service.basic.ForbiddenWordService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.logging.Log;
@@ -28,8 +30,9 @@ public class ForbiddenWordUtils {
   private List<ForbiddenWord> forbiddenWords;
 
   @PostConstruct
-  public void init() {
-    this.forbiddenWords = forbiddenWordService.queryForbiddenWord();;
+  public void init() throws JsonProcessingException {
+    this.forbiddenWords = forbiddenWordService.queryForbiddenWord();
+    log.info("初始化ForbiddenWords:{}", new ObjectMapper().writeValueAsString(forbiddenWords));
   }
 
   public List<ForbiddenWord> getForbiddenWords() {
