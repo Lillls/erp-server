@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 /**
  * <p>
@@ -119,12 +121,38 @@ public class ProductService {
    *
    * @return
    */
-  public IPage<ProductPageResult> selectProductWithSize(Long userId, int current, int size) {
+  public IPage<ProductPageResult> selectProductWithSizePage(Long userId, int current, int size) {
     IPage<ProductPageResult> page = new Page<>(current, size);
-    return productMapper.selectProductWithSize(userId, page);
+    return productMapper.selectProductWithSizePage(userId, page);
   }
 
   public void mergeProduct(List<Long> ids, String parentSku, Long parentId) {
     productMapper.mergeProduct(StringUtils.join(ids, ","), parentSku, parentId);
+  }
+
+
+  /**
+   * 根据id查查询带有Child集合的商品信息
+   * @param id
+   * @return
+   */
+  public ProductPageResult queryWithChild(Long id){
+    ProductPageResult res = productMapper.selectProductWithSize(id);
+    Optional.ofNullable(res).ifPresent(item -> {
+      if(StringUtils.isNotEmpty(item.getParentage())
+              && item.getParentage().equalsIgnoreCase("Parent")){
+        item.setChilds(queryByParentId(item.getId()));
+      }
+    });
+    return res;
+  }
+
+  /**
+   * 根据parent_id查询子产品集合
+   * @param parentId
+   * @return
+   */
+  public List<Product> queryByParentId(Long parentId){
+    return productRepository.queryByParentId(parentId);
   }
 }

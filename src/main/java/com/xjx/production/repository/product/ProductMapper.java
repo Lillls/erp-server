@@ -26,12 +26,14 @@ public interface ProductMapper extends MyBaseMapper<Product> {
    * @param page
    * @return
    */
-  IPage<ProductPageResult> selectProductWithSize(@Param("userId") Long userId,
+  IPage<ProductPageResult> selectProductWithSizePage(@Param("userId") Long userId,
       IPage<ProductPageResult> page);
 
   @Update(
       "update product set parent_sku = #{parentSku},parent_id = #{parentId} where id in (${ids})")
   void mergeProduct(@Param("ids") String ids, @Param("parentSku") String parentSku,
       @Param("parentId") Long parentId);
+
+  ProductPageResult selectProductWithSize(@Param("id") Long id);
 
 }

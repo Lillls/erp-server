@@ -6,12 +6,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xjx.production.dto.category.BasicCategoryInfo;
 import com.xjx.production.dto.category.BasicSizeInfo;
 
+import com.xjx.production.entity.product.Product;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @ApiModel(value = "ProductPageResult", description = "商品分页列表返回结果")
@@ -111,4 +113,7 @@ public class ProductPageResult {
 
   @ApiModelProperty("品类信息")
   private BasicCategoryInfo categoryInfo;
+
+  @ApiModelProperty("Child产品列表")
+  private List<Product> childs;
 }

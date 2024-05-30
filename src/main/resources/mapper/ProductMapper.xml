@@ -80,7 +80,7 @@
         category, sku, parent_sku, description, price, description_pictures, key_feature1, key_feature2, key_feature3, key_feature4, key_feature5, generic_keywords, category_id, export_count, extra_info, is_delete
   </sql>
 
-  <select id="selectProductWithSize" resultMap="pageMap">
+  <select id="selectProductWithSizePage" resultMap="pageMap">
     SELECT
     p.*,
     s.id as sid,
@@ -105,6 +105,37 @@
     <where>
       p.is_delete = 0 and
       p.creator = #{userId}
+    </where>
+  </select>
+
+  <select id="selectProductWithSize" resultMap="pageMap">
+    SELECT
+      p.*,
+      s.id as sid,
+      s.width,
+      s.height,
+      s.unit,
+      s.package_weight,
+      s.symbol,
+      s.size_url,
+      s.price,
+      lc.category_alias1,
+      lc.id as category_id,
+      lc.category_alias2,
+      lc.category_name,
+      lc.fixed_data
+    from
+        product p
+    left join size_price s on
+        p.size_id = s.id
+    left join category lc on
+        p.category_id = lc.id
+    <where>
+        1=1
+        and p.is_delete = 0
+        <if test="id != null">
+          and p.id = #{id}
+        </if>
     </where>
   </select>
 </mapper>

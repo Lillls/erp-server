@@ -1,10 +1,14 @@
 package com.xjx.production.repository.product;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.xjx.production.entity.product.Product;
 import com.xjx.production.plugin.BaseRepository;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+
+import java.util.List;
 
 /**
  * <p>
@@ -32,5 +36,17 @@ public class ProductRepository extends BaseRepository<ProductMapper, Product> {
     QueryWrapper<Product> queryWrapper = new QueryWrapper<>();
     queryWrapper.setEntity(product);
     return pageAndSort(queryWrapper, product);
+  }
+
+  /**
+   * 根据parent_id查询子产品集合
+   * @param parentId
+   * @return
+   */
+  public List<Product> queryByParentId(Long parentId){
+      LambdaQueryWrapper<Product> wrapper = new LambdaQueryWrapper<>();
+      wrapper.eq(Product::getParentId, parentId)
+              .eq(Product::getIsDelete, 0);
+      return list(wrapper);
   }
 }

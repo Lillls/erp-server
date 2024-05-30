@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -96,13 +97,27 @@ public class ProductController {
       @RequestParam(value = "current", required = false, defaultValue = "-1") int current,
       @RequestParam("size") int size) {
     Long userId = umsMemberService.getCurrentUser().getId();
-    IPage<ProductPageResult> data = productService.selectProductWithSize(userId, current, size);
+    IPage<ProductPageResult> data = productService.selectProductWithSizePage(userId, current, size);
     for (ProductPageResult record : data.getRecords()) {
-      if (Objects.equals(record.getParentage(), "Parent")) {
+      if (StringUtils.isNotEmpty(record.getParentage())
+              && Objects.equals(record.getParentage(), "Parent")) {
         record.setSizeInfo(null);
+        record.setChilds(productService.queryByParentId(record.getId()));
       }
     }
     return R.ok(data);
+  }
+
+  /**
+   * 根据id查查询带有Child集合的商品信息
+   * @param id
+   * @return
+   */
+  @ApiOperation(value = "根据id查查询带有Child集合的商品信息")
+  @ApiImplicitParam(name = "id", value = "id", required = true, dataTypeClass = Long.class, paramType = "query")
+  @PostMapping("/queryWithChild")
+  public R<ProductPageResult> queryWithChild(@RequestParam Long id) {
+    return R.ok(productService.queryWithChild(id));
   }
 
 }
