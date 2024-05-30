@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xjx.production.plugin.AbstractBaseEntity;
 
-import apple.laf.JRSUIConstants;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
