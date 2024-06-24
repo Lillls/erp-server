@@ -1,22 +1,14 @@
 package com.xjx.production.security.permission;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.javafx.tools.packager.Log;
-import com.xjx.production.entity.sys.Role;
 import com.xjx.production.repository.sys.RoleMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.codehaus.jettison.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
-import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
-import org.springframework.util.AntPathMatcher;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
-import org.springframework.web.servlet.HandlerExecutionChain;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
