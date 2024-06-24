@@ -40,7 +40,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         MemberDetails details = (MemberDetails)authentication.getPrincipal();
         String jwt = jwtTokenUtil.generateToken(details);
         /**
-         * token先写进数据库，应该进redis，但是现在没有
+         * token先写进数据库，应该进redis，但是现在没有 TODO
+         * 然后JWT认证的过滤器直接从redis中拿到完整用户信息
          */
         memberRepository.updateToken(details.getUmsMember().getId(), jwt);
         details.getUmsMember().setToken(jwt);

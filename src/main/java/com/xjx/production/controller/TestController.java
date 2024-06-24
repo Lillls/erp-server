@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 
@@ -33,6 +34,7 @@ public class TestController {
 
   @ApiOperation(value = "测试", notes = "测试")
   @GetMapping("/out")
+  //@RolesAllowed("ROLE_admin")
   public R<String> out(@RequestParam String rawPwd) {
     return R.ok(passwordEncoder.encode(rawPwd));
   }

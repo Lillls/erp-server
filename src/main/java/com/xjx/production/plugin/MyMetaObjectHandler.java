@@ -3,6 +3,7 @@ package com.xjx.production.plugin;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.xjx.production.entity.user.UmsMember;
 import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import java.util.Objects;
  * Created by tw on 2022/6/15.
  */
 @Component
+@Profile("pro")
 public class MyMetaObjectHandler implements MetaObjectHandler {
 
     @Override

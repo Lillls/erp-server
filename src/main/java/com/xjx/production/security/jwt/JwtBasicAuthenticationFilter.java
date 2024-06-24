@@ -3,7 +3,9 @@ package com.xjx.production.security.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xjx.production.base.R;
 import com.xjx.production.base.ResultCode;
+import com.xjx.production.dto.user.MemberDetails;
 import com.xjx.production.entity.user.UmsMember;
+import com.xjx.production.repository.sys.RoleMapper;
 import com.xjx.production.repository.user.UmsMemberRepository;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
@@ -30,6 +32,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -45,13 +48,16 @@ public class JwtBasicAuthenticationFilter extends GenericFilterBean {
 
     private final RequestMatcher knife4jAuthenticationRequestMatcher;
 
+    private RoleMapper roleMapper;
+
     private static final String FILTER_APPLIED = "__spring_security_jwtBasicAuthenticationFilter_filterApplied";
 
-    public JwtBasicAuthenticationFilter(UmsMemberRepository umsMemberRepository, JwtTokenUtil jwtTokenUtil, RequestMatcher requestMatcher){
+    public JwtBasicAuthenticationFilter(UmsMemberRepository umsMemberRepository, JwtTokenUtil jwtTokenUtil, RequestMatcher requestMatcher, RoleMapper roleMapper){
         this.memberRepository = umsMemberRepository;
         this.jwtTokenUtil = jwtTokenUtil;
         //this.knife4jAuthenticationRequestMatcher = new AntPathRequestMatcher("/login", "POST");
         this.knife4jAuthenticationRequestMatcher = requestMatcher;
+        this.roleMapper = roleMapper;
     }
 
 
@@ -93,7 +99,13 @@ public class JwtBasicAuthenticationFilter extends GenericFilterBean {
 
                 umsMember.setPassword(null);
                 umsMember.setToken(null);
-                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(umsMember,null,null);
+
+                /**
+                 * 查询用户角色
+                 */
+                List<String> roleNames = roleMapper.queryRoleList(umsMember.getId());
+
+                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(umsMember,null, MemberDetails.convertAuthority(roleNames));
                 SecurityContextHolder.getContext().setAuthentication(token);
                 chain.doFilter(request,response);
 
