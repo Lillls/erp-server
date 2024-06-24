@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xjx.production.repository.sys.RoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xjx.production.entity.sys.Role">
+        <result column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="creator" property="creator" />
+        <result column="updator" property="updator" />
+        <result column="creator_name" property="creatorName" />
+        <result column="updator_name" property="updatorName" />
+        <result column="name" property="name" />
+        <result column="description" property="description" />
+        <result column="is_delete" property="isDelete" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        update_time,
+        creator,
+        updator,
+        creator_name,
+        updator_name,
+        name, description, is_delete, status
+    </sql>
+
+    <select id="queryRoleNameByPattern" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT
+            sr.name
+        from
+            sys_resource r
+                left join
+            sys_menu_resource_mid mr_mid on
+                r.id = mr_mid .resource_id
+                LEFT JOIN
+            sys_menu m on
+                m.id = mr_mid.menu_id
+                LEFT join
+            sys_role_menu_mid rm_mid on
+                rm_mid.menu_id = m.id
+                LEFT join
+            sys_role sr on
+                sr.id = rm_mid.role_id
+        where
+            r.pattern = #{pattern}
+          and r.pattern_method = #{method}
+          and r.is_delete = 0
+          and r.status = 'open'
+          and m.is_delete = 0
+          and m.status = 'open'
+          and r.is_delete = 0
+          and r.status = 'open'
+    </select>
+
+    <select id="queryRoleList" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT
+            sr.name
+        from
+            sys_user_role_mid ur_mid
+                inner join sys_role sr on
+                ur_mid.role_id = sr.id
+        WHERE
+            ur_mid.user_id = #{userId}
+            and sr.is_delete = 0
+            and sr.status = 'open'
+    </select>
+
+</mapper>

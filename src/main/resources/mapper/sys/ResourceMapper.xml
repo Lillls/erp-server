@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xjx.production.repository.sys.ResourceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xjx.production.entity.sys.Resource">
+        <result column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="creator" property="creator" />
+        <result column="updator" property="updator" />
+        <result column="creator_name" property="creatorName" />
+        <result column="updator_name" property="updatorName" />
+        <result column="is_delete" property="isDelete" />
+        <result column="name" property="name" />
+        <result column="pattern" property="pattern" />
+        <result column="pattern_method" property="patternMethod" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        update_time,
+        creator,
+        updator,
+        creator_name,
+        updator_name,
+        is_deleted,
+        name, pattern, pattern_method, type, status
+    </sql>
+
+</mapper>

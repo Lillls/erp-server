@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xjx.production.repository.sys.MenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xjx.production.entity.sys.Menu">
+        <result column="id" property="id" />
+        <result column="creator" property="creator" />
+        <result column="updator" property="updator" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="creator_name" property="creatorName" />
+        <result column="updator_name" property="updatorName" />
+        <result column="name" property="name" />
+        <result column="description" property="description" />
+        <result column="parent_id" property="parentId" />
+        <result column="menu_sort" property="menuSort" />
+        <result column="resource" property="resource" />
+        <result column="type" property="type" />
+        <result column="menu_icon" property="menuIcon" />
+        <result column="status" property="status" />
+        <result column="is_delete" property="isDelete" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        creator,
+        updator,
+        create_time,
+        update_time,
+        creator_name,
+        updator_name,
+        name, description, parent_id, menu_sort, resource, type, menu_icon, status, is_delete
+    </sql>
+
+    <select id="loginMenuList" resultType="com.xjx.production.dto.user.MenuDto" parameterType="java.lang.Long">
+        SELECT
+            DISTINCT sm.id ,
+            sm.name ,
+            sm.router_name ,
+            sm.menu_sort ,
+            sm.menu_icon
+        from
+            sys_user_role_mid ur_mid
+                inner join sys_role sr on
+                ur_mid.role_id = sr.id
+                inner join sys_role_menu_mid rm_mid on
+                sr.id  = rm_mid .role_id
+                inner join sys_menu sm on sm.id = rm_mid .menu_id
+        <where>
+            1=1
+            <if test="userId != null">
+                and ur_mid.user_id = #{userId}
+            </if>
+            <if test="parentId != null">
+                and sm.parent_id = #{parentId}
+            </if>
+        </where>
+            order by sm.menu_sort
+    </select>
+</mapper>
