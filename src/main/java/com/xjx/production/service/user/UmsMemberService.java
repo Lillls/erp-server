@@ -1,5 +1,6 @@
 package com.xjx.production.service.user;
 
+import com.erp.auth.inter.AuthUserService;
 import com.xjx.production.entity.user.UmsMember;
 import com.xjx.production.repository.user.UmsMemberMapper;
 import com.xjx.production.repository.user.UmsMemberRepository;
@@ -19,7 +20,7 @@ import java.util.List;
  * @since 2024-05-10
  */
 @Service
-public class UmsMemberService {
+public class UmsMemberService implements AuthUserService {
 
     /**
      * umsMemberMapper
@@ -92,4 +93,13 @@ public class UmsMemberService {
         return (UmsMember) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
+    @Override
+    public void updateToken(Long userId, String token) {
+        umsMemberRepository.updateToken(userId, token);
+    }
+
+    @Override
+    public UmsMember queryMemberByUserName(String userName) {
+        return umsMemberRepository.queryMemberByUserName(userName);
+    }
 }

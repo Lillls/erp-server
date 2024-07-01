@@ -1,5 +1,6 @@
 package com.xjx.production.service.sys;
 
+import com.erp.auth.inter.AuthRoleService;
 import com.xjx.production.entity.sys.Role;
 import com.xjx.production.repository.sys.RoleMapper;
 import com.xjx.production.repository.sys.RoleRepository;
@@ -17,7 +18,7 @@ import java.util.List;
  * @since 2024-06-24
  */
 @Service
-public class RoleService {
+public class RoleService implements AuthRoleService {
 
     /**
      * roleMapper
@@ -84,5 +85,15 @@ public class RoleService {
      */
     public Boolean deleteRoleById(Long id) {
         return roleRepository.removeById(id);
+    }
+
+    @Override
+    public List<String> queryRolesByUserId(Long userId) {
+        return roleMapper.queryRoleList(userId);
+    }
+
+    @Override
+    public List<String> queryRoleNameByPattern(String pattern, String requestMethod) {
+        return roleMapper.queryRoleNameByPattern(pattern, requestMethod);
     }
 }

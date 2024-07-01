@@ -34,7 +34,7 @@
         name, description, parent_id, menu_sort, resource, type, menu_icon, status, is_delete
     </sql>
 
-    <select id="loginMenuList" resultType="com.xjx.production.dto.user.MenuDto" parameterType="java.lang.Long">
+    <select id="loginMenuList" resultType="com.erp.auth.authentication.dto.MenuDto" parameterType="java.lang.Long">
         SELECT
             DISTINCT sm.id ,
             sm.name ,

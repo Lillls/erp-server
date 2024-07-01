@@ -1,12 +1,11 @@
 package com.xjx.production.service.sys;
 
-import com.xjx.production.dto.user.MenuDto;
+import com.erp.auth.authentication.dto.MenuDto;
+import com.erp.auth.inter.AuthMenuService;
 import com.xjx.production.entity.sys.Menu;
 import com.xjx.production.entity.user.UmsMember;
 import com.xjx.production.repository.sys.MenuMapper;
 import com.xjx.production.repository.sys.MenuRepository;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 /**
  * <p>
@@ -25,7 +23,7 @@ import java.util.function.Consumer;
  * @since 2024-06-24
  */
 @Service
-public class MenuService {
+public class MenuService implements AuthMenuService {
 
     /**
      * menuMapper
@@ -115,5 +113,10 @@ public class MenuService {
             menuDto.setChildMenu(this.getMenuWithChild(userId, menuDto.getId()));
         }
         return menuDtos;
+    }
+
+    @Override
+    public List<MenuDto> queryMenusByUserId(Long userId) {
+        return getMenuWithChild(userId, 0L);
     }
 }

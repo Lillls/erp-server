@@ -1,6 +1,6 @@
 package com.xjx.production.repository.sys;
 
-import com.xjx.production.dto.user.MenuDto;
+import com.erp.auth.authentication.dto.MenuDto;
 import com.xjx.production.entity.sys.Menu;
 import com.xjx.production.plugin.MyBaseMapper;
 import org.apache.ibatis.annotations.Param;

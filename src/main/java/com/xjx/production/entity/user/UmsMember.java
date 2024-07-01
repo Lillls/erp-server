@@ -2,6 +2,7 @@ package com.xjx.production.entity.user;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.erp.auth.inter.BaseUser;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xjx.production.plugin.AbstractBaseEntity;
@@ -22,7 +23,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @TableName("ums_member")
 @ApiModel(value="UmsMember", description="")
-public class UmsMember extends AbstractBaseEntity {
+public class UmsMember extends AbstractBaseEntity implements BaseUser {
 
     @ApiModelProperty(value = "用户名")
     @TableField("user_name")
